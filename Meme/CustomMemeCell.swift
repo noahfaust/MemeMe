@@ -13,5 +13,4 @@ class CustomMemeCell: UICollectionViewCell {
     
     @IBOutlet weak var topText: UILabel!
     @IBOutlet weak var bottomText: UILabel!
-    
 }

@@ -30,9 +30,7 @@ class DetailViewController: UIViewController {
     }
     
     func editMeme() {
-        let editorViewController = storyboard?.instantiateViewControllerWithIdentifier("EditorViewController") as! EditorViewController
-        editorViewController.meme = meme
-        presentViewController(editorViewController, animated: true, completion: nil)
+        performSegueWithIdentifier("EditMeme", sender: self)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

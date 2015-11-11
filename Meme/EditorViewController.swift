@@ -33,35 +33,27 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add the Share button as left navigation item
-        //navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "shareImage")
-        
         // Define the delegate of the top and bottom text fields
         topTextField.delegate = topTextFieldDelegate
         bottomTextField.delegate = bottomTextFieldDelegate
         
         // Set the default attributes of the top and bottom text fields
-        setDefaultTextAttributes(topTextField)
-        setDefaultTextAttributes(bottomTextField)
-        initMeme()
+        loadEditor()
         
-        //UIApplication.sharedApplication().setStatusBarStyle(<#T##statusBarStyle: UIStatusBarStyle##UIStatusBarStyle#>, animated: <#T##Bool#>)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Display the navigation bar and toolbar again
+        navigationBar.hidden = false
+        toolbar.hidden = false
         
         // Enable the camera button if the device has a camera
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
         // Subscribe to keyboard notifications (ie. be notified when the keyboard appears or not)
         subscribeToKeyboardNotifications()
-        
-        if let existingMeme = meme {
-            pickedImageView.image = existingMeme.image
-            topTextField.text = existingMeme.topText
-            bottomTextField.text = existingMeme.bottomText
-        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -71,8 +63,27 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     // Initialise the meme editor: empty the image view, initialise the text fields and disable the navigation buttons
-    func initMeme() -> Void {
+    func loadEditor() {
         view.endEditing(true)
+        
+        // Set the default attributes of the top and bottom text fields
+        setDefaultTextAttributes(topTextField)
+        setDefaultTextAttributes(bottomTextField)
+        
+        if let existingMeme = meme {
+            // If the editor edits an existing meme: initalize the image and text fields with the meme data
+            enableNavigationButtons()
+            topTextField.text = existingMeme.topText
+            bottomTextField.text = existingMeme.bottomText
+            pickedImageView.image = existingMeme.image
+            pickedImageView.contentMode = .ScaleAspectFit
+        } else {
+            // If the editor creates a new meme: initialize an empty image view and text fields with TOP and BOTTOM
+            initMeme()
+        }
+    }
+    
+    func initMeme() {
         disableNavigationButtons()
         topTextField.text = textFieldLabel.Top.rawValue
         bottomTextField.text = textFieldLabel.Bottom.rawValue
@@ -81,7 +92,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func cancel(sender: UIBarButtonItem) {
         // Reinitialize the meme
-        initMeme()
+        loadEditor()
     }
     
     func setDefaultTextAttributes(textField: UITextField) {
@@ -146,16 +157,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func sharingCompletionHandler(activityType: String?, completed: Bool, returnedItems: [AnyObject]?, activityError: NSError?) -> Void {
-        // Return if cancelled
-        if !completed {
-            let alertController = UIAlertController(title: "Action error", message: "The action you selected failed", preferredStyle: .Alert)
-            presentViewController(alertController, animated: true, completion: nil)
-            return
-        }
-        
-        //shared successfully
         save()
-        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -169,13 +171,14 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         toolbar.hidden = true
         
         // Render view to an image
-        UIGraphicsBeginImageContext(view.frame.size)
+        //UIGraphicsBeginImageContext(view.frame.size)
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, true, 0.0)
         view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
         // Display the navigation bar and toolbar again
-        navigationBar.hidden = true
+        navigationBar.hidden = false
         toolbar.hidden = false
         
         return memedImage
@@ -190,12 +193,12 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         } else {
             //Create the meme
             meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: pickedImageView.image!, memedImage: generateMemedImage())
-            
-            // Add it to the memes array in the Application Delegate
-            let object = UIApplication.sharedApplication().delegate
-            let appDelegate = object as! AppDelegate
-            appDelegate.memes.append(meme)
         }
+        
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
      }
     
     func keyboardWillShow(notification: NSNotification) {

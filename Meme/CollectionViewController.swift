@@ -11,8 +11,20 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController {
     
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let space: CGFloat = 1.0
+        let dimension = (view.frame.size.width - 2 * space) / 3.0
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSizeMake(dimension, dimension)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -27,11 +39,24 @@ class CollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CustomMemeCell", forIndexPath: indexPath) as! CustomMemeCell
         let meme = memes[indexPath.item]
-        cell.topText.text = meme.topText
-        cell.bottomText.text = meme.bottomText
+        //cell.topText.text = meme.topText
+        setLabelTextAttributes(cell.topText, text: meme.topText)
+        cell.topText.textAlignment = .Center
+        setLabelTextAttributes(cell.bottomText, text: meme.bottomText)
+        cell.bottomText.textAlignment = .Center
         let imageView = UIImageView(image: meme.image)
         cell.backgroundView = imageView
         return cell
+    }
+    
+    func setLabelTextAttributes(label: UILabel, text: String) {
+        let memeTextAttributes = [
+            NSFontAttributeName : UIFont(name: "Impact", size: 20)!,
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSStrokeColorAttributeName : UIColor.blackColor(),
+            NSStrokeWidthAttributeName : -2.0
+        ]
+        label.attributedText = NSAttributedString(string: text, attributes: memeTextAttributes)
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
