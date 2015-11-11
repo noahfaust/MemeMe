@@ -245,14 +245,12 @@
                                 </view>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstItem="8bl-TE-1UH" firstAttribute="top" secondItem="4lY-Tn-qJs" secondAttribute="topMargin" id="0Hz-fG-rUT"/>
-                                    <constraint firstItem="8bl-TE-1UH" firstAttribute="leading" secondItem="4lY-Tn-qJs" secondAttribute="leadingMargin" id="1hz-tT-VfU"/>
-                                    <constraint firstItem="8bl-TE-1UH" firstAttribute="centerX" secondItem="4lY-Tn-qJs" secondAttribute="centerX" id="Q82-Yb-Roc"/>
-                                    <constraint firstItem="cwm-TS-Vtd" firstAttribute="centerX" secondItem="4lY-Tn-qJs" secondAttribute="centerX" id="Tej-ek-XVO"/>
-                                    <constraint firstItem="cwm-TS-Vtd" firstAttribute="bottom" secondItem="4lY-Tn-qJs" secondAttribute="bottomMargin" id="dzb-hq-YGH"/>
-                                    <constraint firstItem="8bl-TE-1UH" firstAttribute="trailing" secondItem="4lY-Tn-qJs" secondAttribute="trailingMargin" id="h1d-el-hyg"/>
-                                    <constraint firstItem="cwm-TS-Vtd" firstAttribute="trailing" secondItem="4lY-Tn-qJs" secondAttribute="trailingMargin" id="sB5-h3-a2d"/>
-                                    <constraint firstItem="cwm-TS-Vtd" firstAttribute="leading" secondItem="4lY-Tn-qJs" secondAttribute="leadingMargin" id="va8-Xw-sOk"/>
+                                    <constraint firstItem="8bl-TE-1UH" firstAttribute="leading" secondItem="4lY-Tn-qJs" secondAttribute="leadingMargin" id="MiC-75-shl"/>
+                                    <constraint firstItem="cwm-TS-Vtd" firstAttribute="bottom" secondItem="4lY-Tn-qJs" secondAttribute="bottomMargin" id="SdV-gH-QAy"/>
+                                    <constraint firstItem="cwm-TS-Vtd" firstAttribute="leading" secondItem="4lY-Tn-qJs" secondAttribute="leadingMargin" id="fSG-A4-B5J"/>
+                                    <constraint firstItem="8bl-TE-1UH" firstAttribute="trailing" secondItem="4lY-Tn-qJs" secondAttribute="trailingMargin" id="gVZ-Gj-ZTA"/>
+                                    <constraint firstItem="cwm-TS-Vtd" firstAttribute="trailing" secondItem="4lY-Tn-qJs" secondAttribute="trailingMargin" id="iL6-jW-Z6C"/>
+                                    <constraint firstItem="8bl-TE-1UH" firstAttribute="top" secondItem="4lY-Tn-qJs" secondAttribute="topMargin" id="oSK-OW-iZ7"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -260,14 +258,12 @@
                                         <exclude reference="cwm-TS-Vtd"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="0Hz-fG-rUT"/>
-                                        <exclude reference="1hz-tT-VfU"/>
-                                        <exclude reference="Q82-Yb-Roc"/>
-                                        <exclude reference="h1d-el-hyg"/>
-                                        <exclude reference="Tej-ek-XVO"/>
-                                        <exclude reference="dzb-hq-YGH"/>
-                                        <exclude reference="sB5-h3-a2d"/>
-                                        <exclude reference="va8-Xw-sOk"/>
+                                        <exclude reference="MiC-75-shl"/>
+                                        <exclude reference="gVZ-Gj-ZTA"/>
+                                        <exclude reference="oSK-OW-iZ7"/>
+                                        <exclude reference="SdV-gH-QAy"/>
+                                        <exclude reference="fSG-A4-B5J"/>
+                                        <exclude reference="iL6-jW-Z6C"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -276,14 +272,12 @@
                                         <include reference="cwm-TS-Vtd"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="0Hz-fG-rUT"/>
-                                        <include reference="1hz-tT-VfU"/>
-                                        <include reference="Q82-Yb-Roc"/>
-                                        <include reference="h1d-el-hyg"/>
-                                        <include reference="Tej-ek-XVO"/>
-                                        <include reference="dzb-hq-YGH"/>
-                                        <include reference="sB5-h3-a2d"/>
-                                        <include reference="va8-Xw-sOk"/>
+                                        <include reference="MiC-75-shl"/>
+                                        <include reference="gVZ-Gj-ZTA"/>
+                                        <include reference="oSK-OW-iZ7"/>
+                                        <include reference="SdV-gH-QAy"/>
+                                        <include reference="fSG-A4-B5J"/>
+                                        <include reference="iL6-jW-Z6C"/>
                                     </mask>
                                 </variation>
                                 <connections>

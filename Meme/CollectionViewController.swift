@@ -39,13 +39,14 @@ class CollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CustomMemeCell", forIndexPath: indexPath) as! CustomMemeCell
         let meme = memes[indexPath.item]
-        //cell.topText.text = meme.topText
         setLabelTextAttributes(cell.topText, text: meme.topText)
         cell.topText.textAlignment = .Center
         setLabelTextAttributes(cell.bottomText, text: meme.bottomText)
         cell.bottomText.textAlignment = .Center
         let imageView = UIImageView(image: meme.image)
         cell.backgroundView = imageView
+        cell.contentView.frame = cell.bounds;
+        //cell.contentView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
         return cell
     }
     
