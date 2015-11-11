@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F10C8E531BF39F7D00DA4056 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10C8E521BF39F7D00DA4056 /* ViewControllerExtension.swift */; };
 		F13939B31BE5C4D400155A40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13939B21BE5C4D400155A40 /* AppDelegate.swift */; };
 		F13939B51BE5C4D400155A40 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13939B41BE5C4D400155A40 /* EditorViewController.swift */; };
 		F13939B81BE5C4D400155A40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13939B61BE5C4D400155A40 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F10C8E521BF39F7D00DA4056 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		F13939AF1BE5C4D300155A40 /* Meme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13939B21BE5C4D400155A40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F13939B41BE5C4D400155A40 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				F13939B21BE5C4D400155A40 /* AppDelegate.swift */,
+				F10C8E521BF39F7D00DA4056 /* ViewControllerExtension.swift */,
 				F13939B61BE5C4D400155A40 /* Main.storyboard */,
 				F1393A1C1BE6582A00155A40 /* Meme.swift */,
 				F1892BB51BF1EC6E0015BE44 /* CollectionViewController.swift */,
@@ -290,6 +293,7 @@
 				F1892BBE1BF22C040015BE44 /* MasterViewController.swift in Sources */,
 				F13939B31BE5C4D400155A40 /* AppDelegate.swift in Sources */,
 				F1892BB61BF1EC6E0015BE44 /* CollectionViewController.swift in Sources */,
+				F10C8E531BF39F7D00DA4056 /* ViewControllerExtension.swift in Sources */,
 				F1892BBC1BF1FCB40015BE44 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,6 +20,7 @@ class CollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set the cell dimensions
         let space: CGFloat = 1.0
         let dimension = (view.frame.size.width - 2 * space) / 3.0
         flowLayout.minimumInteritemSpacing = space
@@ -39,35 +40,26 @@ class CollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CustomMemeCell", forIndexPath: indexPath) as! CustomMemeCell
         let meme = memes[indexPath.item]
+        
+        // Set the top and bottom labels
         setLabelTextAttributes(cell.topText, text: meme.topText)
-        cell.topText.textAlignment = .Center
         setLabelTextAttributes(cell.bottomText, text: meme.bottomText)
-        cell.bottomText.textAlignment = .Center
-        let imageView = UIImageView(image: meme.image)
-        cell.backgroundView = imageView
+        
+        // Set the background view
+        cell.backgroundView = UIImageView(image: meme.image)
+        
+        // Set the frame of the cell according to its size: Solve issue of label being misplace at first load
         cell.contentView.frame = cell.bounds;
-        //cell.contentView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
+        
         return cell
     }
     
     func setLabelTextAttributes(label: UILabel, text: String) {
-        let memeTextAttributes = [
-            NSFontAttributeName : UIFont(name: "Impact", size: 20)!,
-            NSForegroundColorAttributeName : UIColor.whiteColor(),
-            NSStrokeColorAttributeName : UIColor.blackColor(),
-            NSStrokeWidthAttributeName : -2.0
-        ]
-        label.attributedText = NSAttributedString(string: text, attributes: memeTextAttributes)
+        label.attributedText = NSAttributedString(string: text, attributes: getMemeTextAttributes(20.0))
+        label.textAlignment = .Center
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        //Grab the DetailVC from Storyboard
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        
-        //Populate view controller with data from the selected item
-        detailController.meme = memes[indexPath.item]
-        
-        //Present the view controller using navigation
-        self.navigationController!.pushViewController(detailController, animated: true)
+        pushDetailViewController(indexPath)
     }
 }

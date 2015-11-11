@@ -39,7 +39,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         // Set the default attributes of the top and bottom text fields
         loadEditor()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -96,13 +95,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func setDefaultTextAttributes(textField: UITextField) {
-        let memeTextAttributes = [
-            NSFontAttributeName : UIFont(name: "Impact", size: 40)!,
-            NSForegroundColorAttributeName : UIColor.whiteColor(),
-            NSStrokeColorAttributeName : UIColor.blackColor(),
-            NSStrokeWidthAttributeName : -2.0
-        ]
-        textField.defaultTextAttributes = memeTextAttributes
+        textField.defaultTextAttributes = getMemeTextAttributes(40.0)
         textField.textAlignment = .Center
     }
     
@@ -171,7 +164,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         toolbar.hidden = true
         
         // Render view to an image
-        //UIGraphicsBeginImageContext(view.frame.size)
         UIGraphicsBeginImageContextWithOptions(view.frame.size, true, 0.0)
         view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -185,15 +177,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func save() {
-        if var existingMeme = meme {
-            existingMeme.topText = topTextField.text!
-            existingMeme.bottomText = bottomTextField.text!
-            existingMeme.image = pickedImageView.image!
-            existingMeme.memedImage = generateMemedImage()
-        } else {
-            //Create the meme
-            meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: pickedImageView.image!, memedImage: generateMemedImage())
-        }
+        //Create the meme
+        meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: pickedImageView.image!, memedImage: generateMemedImage())
         
         // Add it to the memes array in the Application Delegate
         let object = UIApplication.sharedApplication().delegate

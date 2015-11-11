@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add the Edit button to the navigation controller
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editMeme")
     }
     
@@ -34,6 +35,7 @@ class DetailViewController: UIViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Transfer the meme to the editor
         if segue.identifier == "EditMeme" {
             let editorViewController = segue.destinationViewController as! EditorViewController
             editorViewController.meme = meme

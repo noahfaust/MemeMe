@@ -36,9 +36,6 @@
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="166" y="518" width="68" height="18"/>
-                                </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="5xf-4E-O00">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -46,9 +43,6 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="183" y="84" width="34" height="18"/>
-                                </variation>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7EH-cq-y4W">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -119,15 +113,19 @@
                         <constraints>
                             <constraint firstItem="4Ul-q7-Bxx" firstAttribute="centerX" secondItem="5xf-4E-O00" secondAttribute="centerX" id="2Zp-mX-GMJ"/>
                             <constraint firstItem="7EH-cq-y4W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="84N-Kt-Zi3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5xf-4E-O00" secondAttribute="trailing" id="BY4-Hm-oWC"/>
                             <constraint firstItem="7EH-cq-y4W" firstAttribute="top" secondItem="7VD-12-6Fd" secondAttribute="bottom" constant="20" id="Fho-NH-xft"/>
                             <constraint firstItem="7VD-12-6Fd" firstAttribute="centerX" secondItem="Umn-Lz-aCu" secondAttribute="centerX" id="JtE-To-USh"/>
                             <constraint firstItem="7EH-cq-y4W" firstAttribute="centerX" secondItem="Umn-Lz-aCu" secondAttribute="centerX" id="K9X-wX-0ep"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7EH-cq-y4W" secondAttribute="bottom" id="N4O-LQ-Ijt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7VD-12-6Fd" secondAttribute="trailing" id="Naa-9w-fgx"/>
                             <constraint firstItem="4Ul-q7-Bxx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="OhH-rQ-aDi"/>
                             <constraint firstItem="7EH-cq-y4W" firstAttribute="top" secondItem="Umn-Lz-aCu" secondAttribute="bottom" id="PFu-ac-dN7"/>
                             <constraint firstItem="5xf-4E-O00" firstAttribute="centerX" secondItem="Umn-Lz-aCu" secondAttribute="centerX" id="QB1-6v-abD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Umn-Lz-aCu" secondAttribute="trailing" id="W13-5M-7et"/>
+                            <constraint firstItem="7VD-12-6Fd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="WbV-OV-Rzg"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Umn-Lz-aCu" secondAttribute="leading" id="ade-Ne-V7U"/>
+                            <constraint firstItem="5xf-4E-O00" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gAz-H2-aG2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7EH-cq-y4W" secondAttribute="trailing" constant="-20" id="i6U-81-XBv"/>
                             <constraint firstItem="Umn-Lz-aCu" firstAttribute="top" secondItem="4Ul-q7-Bxx" secondAttribute="bottom" id="nxI-P7-Yly"/>
                             <constraint firstItem="4Ul-q7-Bxx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="roF-5v-WoU"/>
@@ -142,21 +140,25 @@
                                 <exclude reference="4Ul-q7-Bxx"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="QB1-6v-abD"/>
-                                <exclude reference="JtE-To-USh"/>
                                 <exclude reference="2Zp-mX-GMJ"/>
                                 <exclude reference="OhH-rQ-aDi"/>
                                 <exclude reference="roF-5v-WoU"/>
                                 <exclude reference="tY0-Nv-vjS"/>
+                                <exclude reference="W13-5M-7et"/>
+                                <exclude reference="ade-Ne-V7U"/>
+                                <exclude reference="nxI-P7-Yly"/>
+                                <exclude reference="utg-9w-rR1"/>
+                                <exclude reference="BY4-Hm-oWC"/>
+                                <exclude reference="QB1-6v-abD"/>
+                                <exclude reference="gAz-H2-aG2"/>
+                                <exclude reference="JtE-To-USh"/>
+                                <exclude reference="Naa-9w-fgx"/>
+                                <exclude reference="WbV-OV-Rzg"/>
                                 <exclude reference="84N-Kt-Zi3"/>
                                 <exclude reference="Fho-NH-xft"/>
                                 <exclude reference="K9X-wX-0ep"/>
                                 <exclude reference="PFu-ac-dN7"/>
                                 <exclude reference="i6U-81-XBv"/>
-                                <exclude reference="W13-5M-7et"/>
-                                <exclude reference="ade-Ne-V7U"/>
-                                <exclude reference="nxI-P7-Yly"/>
-                                <exclude reference="utg-9w-rR1"/>
                                 <exclude reference="N4O-LQ-Ijt"/>
                             </mask>
                         </variation>
@@ -168,21 +170,25 @@
                                 <include reference="4Ul-q7-Bxx"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="QB1-6v-abD"/>
-                                <include reference="JtE-To-USh"/>
                                 <include reference="2Zp-mX-GMJ"/>
                                 <include reference="OhH-rQ-aDi"/>
                                 <include reference="roF-5v-WoU"/>
                                 <include reference="tY0-Nv-vjS"/>
+                                <include reference="W13-5M-7et"/>
+                                <include reference="ade-Ne-V7U"/>
+                                <include reference="nxI-P7-Yly"/>
+                                <include reference="utg-9w-rR1"/>
+                                <include reference="BY4-Hm-oWC"/>
+                                <include reference="QB1-6v-abD"/>
+                                <include reference="gAz-H2-aG2"/>
+                                <include reference="JtE-To-USh"/>
+                                <include reference="Naa-9w-fgx"/>
+                                <include reference="WbV-OV-Rzg"/>
                                 <include reference="84N-Kt-Zi3"/>
                                 <include reference="Fho-NH-xft"/>
                                 <include reference="K9X-wX-0ep"/>
                                 <include reference="PFu-ac-dN7"/>
                                 <include reference="i6U-81-XBv"/>
-                                <include reference="W13-5M-7et"/>
-                                <include reference="ade-Ne-V7U"/>
-                                <include reference="nxI-P7-Yly"/>
-                                <include reference="utg-9w-rR1"/>
                                 <include reference="N4O-LQ-Ijt"/>
                             </mask>
                         </variation>
@@ -490,6 +496,6 @@
         <image name="TableIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="K7C-1z-70w"/>
+        <segue reference="FnL-Nc-Gf4"/>
     </inferredMetricsTieBreakers>
 </document>

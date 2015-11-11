@@ -25,7 +25,6 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //TODO
         let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableCell")!
         cell.textLabel!.text = memes[indexPath.row].topText
         cell.detailTextLabel?.text = memes[indexPath.row].bottomText
@@ -34,22 +33,19 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //Grab the DetailVC from Storyboard
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        
-        //Populate view controller with data from the selected item
-        detailController.meme = memes[indexPath.item]
-        
-        //Present the view controller using navigation
-        self.navigationController!.pushViewController(detailController, animated: true)
+        pushDetailViewController(indexPath)
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // Allow delete on swipe
         if editingStyle == UITableViewCellEditingStyle.Delete {
             // Get the App Delegate
             let object = UIApplication.sharedApplication().delegate
             let appDelegate = object as! AppDelegate
+            // Delete the meme from the app delegate
             appDelegate.deleteMeme(indexPath)
+            
+            // Delete the row in view and reload the data
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             tableView.reloadData()
         }
