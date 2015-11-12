@@ -14,12 +14,20 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var memeImage: UIImageView!
     
     var meme: Meme!
+    var indexPath:NSIndexPath!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add the Edit button to the navigation controller
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editMeme")
+        // Create an Edit button
+        let editButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editMeme")
+
+        // Create a Delete button
+        //let deleteButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Delete, target: self, action: "deleteMeme")
+        let deleteButton = UIBarButtonItem(title: "Delete", style: .Plain, target: self, action: "deleteMeme")
+        
+        // Add the 2 buttons to the navigation items
+        navigationItem.setRightBarButtonItems([editButton,deleteButton], animated: true)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -27,11 +35,17 @@ class DetailViewController: UIViewController {
         
         if let detailMeme = meme {
             memeImage.image = detailMeme.memedImage
+            memeImage.contentMode = .ScaleAspectFit
         }
     }
     
     func editMeme() {
         performSegueWithIdentifier("EditMeme", sender: self)
+    }
+    
+    func deleteMeme() {
+        super.deleteMeme(indexPath)
+        navigationController!.popViewControllerAnimated(true)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -26,8 +26,23 @@ extension UIViewController {
     
         //Populate view controller with data from the selected item
         detailViewController.meme = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.item]
+        detailViewController.indexPath = indexPath
     
         //Present the view controller using navigation
-        self.navigationController!.pushViewController(detailViewController, animated: true)
+        navigationController!.pushViewController(detailViewController, animated: true)
+    }
+    
+    func presentEditorWithMeme(meme: Meme) {
+        let editorViewController = storyboard?.instantiateViewControllerWithIdentifier("EditorViewController") as! EditorViewController
+        editorViewController.meme = meme
+        presentViewController(editorViewController, animated: true, completion: nil)
+    }
+    
+    func deleteMeme(indexPath: NSIndexPath) {
+        // Get the App Delegate
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        // Delete the meme from the app delegate
+        appDelegate.deleteMeme(indexPath)
     }
 }

@@ -330,7 +330,6 @@
                             </imageView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="W1H-a4-hGo" secondAttribute="trailing" constant="-20" id="2gD-g1-ZgS"/>
                             <constraint firstItem="wp0-iU-L9c" firstAttribute="top" secondItem="W1H-a4-hGo" secondAttribute="bottom" id="8Yl-QY-fz7"/>

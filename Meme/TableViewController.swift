@@ -17,7 +17,7 @@ class TableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,9 +45,26 @@ class TableViewController: UITableViewController {
             // Delete the meme from the app delegate
             appDelegate.deleteMeme(indexPath)
             
+        }
+    }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let edit = UITableViewRowAction(style: .Normal, title: "Edit") { action, index in
+            self.presentEditorWithMeme(self.memes[indexPath.item])
+        }
+        edit.backgroundColor = UIColor.blueColor()
+        
+        let delete = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
+            // Delete meme from the AppDelegate
+            self.deleteMeme(indexPath)
+            
             // Delete the row in view and reload the data
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             tableView.reloadData()
         }
+        delete.backgroundColor = UIColor.redColor()
+        
+        return [edit, delete]
     }
 }

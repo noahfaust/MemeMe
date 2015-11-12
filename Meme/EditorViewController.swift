@@ -38,7 +38,26 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         bottomTextField.delegate = bottomTextFieldDelegate
         
         // Set the default attributes of the top and bottom text fields
-        loadEditor()
+        view.endEditing(true)
+        
+        // Set the default attributes of the top and bottom text fields
+        setDefaultTextAttributes(topTextField)
+        setDefaultTextAttributes(bottomTextField)
+        
+        if let existingMeme = meme {
+            // If the editor edits an existing meme: initalize the image and text fields with the meme data
+            enableShareButton()
+            topTextField.text = existingMeme.topText
+            bottomTextField.text = existingMeme.bottomText
+            pickedImageView.image = existingMeme.image
+            pickedImageView.contentMode = .ScaleAspectFit
+        } else {
+            // If the editor creates a new meme: initialize an empty image view and text fields with TOP and BOTTOM
+            topTextField.text = textFieldLabel.Top.rawValue
+            bottomTextField.text = textFieldLabel.Bottom.rawValue
+            pickedImageView.image = nil
+            disableShareButton()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -61,37 +80,9 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         unsubscribeFromKeyboardNotifications()
     }
     
-    // Initialise the meme editor: empty the image view, initialise the text fields and disable the navigation buttons
-    func loadEditor() {
-        view.endEditing(true)
-        
-        // Set the default attributes of the top and bottom text fields
-        setDefaultTextAttributes(topTextField)
-        setDefaultTextAttributes(bottomTextField)
-        
-        if let existingMeme = meme {
-            // If the editor edits an existing meme: initalize the image and text fields with the meme data
-            enableNavigationButtons()
-            topTextField.text = existingMeme.topText
-            bottomTextField.text = existingMeme.bottomText
-            pickedImageView.image = existingMeme.image
-            pickedImageView.contentMode = .ScaleAspectFit
-        } else {
-            // If the editor creates a new meme: initialize an empty image view and text fields with TOP and BOTTOM
-            initMeme()
-        }
-    }
-    
-    func initMeme() {
-        disableNavigationButtons()
-        topTextField.text = textFieldLabel.Top.rawValue
-        bottomTextField.text = textFieldLabel.Bottom.rawValue
-        pickedImageView.image = nil
-    }
-    
     @IBAction func cancel(sender: UIBarButtonItem) {
-        // Reinitialize the meme
-        loadEditor()
+        // Dismiss the editor
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func setDefaultTextAttributes(textField: UITextField) {
@@ -117,7 +108,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             pickedImageView.image = image
             pickedImageView.contentMode = .ScaleAspectFit
-            enableNavigationButtons()
+            enableShareButton()
         }
         // Dismiss the Image Picker View Controller
         picker.dismissViewControllerAnimated(true, completion: nil)
@@ -132,15 +123,15 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     // Enable navigation buttons
-    func enableNavigationButtons() -> Void {
+    func enableShareButton() -> Void {
         shareButton.enabled = true
-        cancelButton.enabled = true
+        //cancelButton.enabled = true
     }
     
     // Disable navigations buttons
-    func disableNavigationButtons() -> Void {
+    func disableShareButton() -> Void {
         shareButton.enabled = false
-        cancelButton.enabled = false
+        //cancelButton.enabled = false
     }
     
     @IBAction func shareImage(sender: AnyObject) {
@@ -150,7 +141,9 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func sharingCompletionHandler(activityType: String?, completed: Bool, returnedItems: [AnyObject]?, activityError: NSError?) -> Void {
-        save()
+        if completed {
+            save()
+        }
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -195,9 +188,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func keyboardWillHide(notification: NSNotification) {
         // When keyboard hides, bring the frame back to its orginal place
-        if bottomTextField.isFirstResponder() {
-            view.frame.origin.y = 0
-        }
+        view.frame.origin.y = 0
     }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {

@@ -22,7 +22,6 @@
 		F1892BB81BF1EDAD0015BE44 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1892BB71BF1EDAD0015BE44 /* TableViewController.swift */; };
 		F1892BBA1BF1F7030015BE44 /* CustomMemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1892BB91BF1F7030015BE44 /* CustomMemeCell.swift */; };
 		F1892BBC1BF1FCB40015BE44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1892BBB1BF1FCB40015BE44 /* DetailViewController.swift */; };
-		F1892BBE1BF22C040015BE44 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1892BBD1BF22C040015BE44 /* MasterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +63,6 @@
 		F1892BB71BF1EDAD0015BE44 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		F1892BB91BF1F7030015BE44 /* CustomMemeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMemeCell.swift; sourceTree = "<group>"; };
 		F1892BBB1BF1FCB40015BE44 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		F1892BBD1BF22C040015BE44 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +127,6 @@
 				F13939BB1BE5C4D400155A40 /* LaunchScreen.storyboard */,
 				F13939BE1BE5C4D400155A40 /* Info.plist */,
 				F1394DF91BEA4A1E0064DF96 /* Impact.ttf */,
-				F1892BBD1BF22C040015BE44 /* MasterViewController.swift */,
 			);
 			path = Meme;
 			sourceTree = "<group>";
@@ -290,7 +287,6 @@
 				F1393A1D1BE6582A00155A40 /* Meme.swift in Sources */,
 				F1892BBA1BF1F7030015BE44 /* CustomMemeCell.swift in Sources */,
 				F13939E11BE5FBEE00155A40 /* MemeTextFieldDelegate.swift in Sources */,
-				F1892BBE1BF22C040015BE44 /* MasterViewController.swift in Sources */,
 				F13939B31BE5C4D400155A40 /* AppDelegate.swift in Sources */,
 				F1892BB61BF1EC6E0015BE44 /* CollectionViewController.swift in Sources */,
 				F10C8E531BF39F7D00DA4056 /* ViewControllerExtension.swift in Sources */,
